@@ -23,7 +23,7 @@ A list of technologies used within the project:
 
 A little intro about the installation. 
 ```
-$ git clone https://example.com
+$ git clone https://github.com/gerar019/Nextail.git
 $ cd ../path/to/the/file
 $ pip install unittest
 $ python main.py 
