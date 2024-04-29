@@ -2,6 +2,8 @@
 -- Es una solucion para jugar un poco con tables y luego poder hacer algo de analita si se quisiese 
 -- Una URL para probar puede ser https://sqliteonline.com/
 
+----------------------------------------------------------------
+----------------------------------------------------------------
 CREATE TABLE Products (
     Code VARCHAR(10) PRIMARY KEY,
     Name VARCHAR(100),
@@ -18,6 +20,8 @@ CREATE TABLE PricingRules (
     FOREIGN KEY (ProductCode) REFERENCES Products(Code)
 );
 
+----------------------------------------------------------------
+----------------------------------------------------------------
 -- Insertar datos en la tabla PricingRules
 INSERT INTO PricingRules (productcode, type, discounttype, mincount, discountedprice, price)
 VALUES
@@ -25,15 +29,16 @@ VALUES
     ('TSHIRT','discount' , 'bulk', 3, 19.00, NULL),
     ('PANTS','no-discount' , null, null, null, NULL);
 
-
 -- Insertar datos en la tabla Products
 INSERT INTO Products (code, name, price)
 VALUES
     ('VOUCHER', 'Gift Card', 5.00),
     ('TSHIRT', 'Summer T-Shirt', 20.00),
     ('PANTS', 'Summer Pants', 7.50);
-    
-    
+
+
+----------------------------------------------------------------    
+----------------------------------------------------------------   
 -- Crear una tabla temporal para almacenar los productos escaneados junto con su cantidad
 drop TABLE if exists ScannedItems;
 CREATE TEMPORARY TABLE ScannedItems (
@@ -50,8 +55,8 @@ VALUES
 ('VOUCHER', 1, 3), ('TSHIRT', 1,3), ('PANTS', 1, 3),
 ('VOUCHER', 3, 4), ('TSHIRT', 3,4), ('PANTS', 1, 4);
 
-select * from ScannedItems
-
+----------------------------------------------------------------
+----------------------------------------------------------------
 -- Calcular el total basado en las reglas de precios
 SELECT s.Sale_id,
     SUM(CASE WHEN pr.Type = 'discount' THEN 
@@ -72,5 +77,8 @@ JOIN
     PricingRules pr ON s.Code = pr.ProductCode
 join 
 	Products pd on s.Code = pd.Code
-GROUP by s.Sale_id
+GROUP by s.Sale_id;
+
+----------------------------------------------------------------
+----------------------------------------------------------------
 
