@@ -28,4 +28,16 @@ $ cd ../path/to/the/file
 $ pip install unittest
 $ python main.py 
 ```
-Side information: It does not require parameters, although a possible solution could also incorporate input by shopping list parameter
+if you want to run the test 
+```
+$ pyhton test/test_apply_reules.py
+```
+Side information: 
+1.  It does not require parameters, although a possible solution could also incorporate input by shopping list parameter
+2.  In order to run SQL solution, you can use this:   [Sqlite online](https://sqliteonline.com/)
+
+
+
+
+
+
